@@ -1,16 +1,16 @@
 import java.util.Scanner;
 class Fraction{
+    public static Scanner sc=new Scanner(System.in);
     int num,denom;
-    Scanner sc=new Scanner(System.in);
+    
     Fraction (){
         
     }
     Fraction(int num,int denom){
-        denom=denom;
-        num=num;
+        this.denom=denom;
+        this.num=num;
     }
         void GetValue(String arg){
-        Scanner sc=new Scanner(System.in);
         System.out.print("Enter Numerator Value of "+arg+"- ");
         this.num=sc.nextInt();
         System.out.print("Enter Denominator Value of "+arg+"- ");
@@ -19,11 +19,10 @@ class Fraction{
     
     void showfraction(Fraction Result){
         if(Result.num==Result.denom)
-            System.out.println("The Value is-1");
+            System.out.println("The final Value is-1");
         else
-            System.out.println("The Value is-"+Result.num+"/"+Result.denom);
-    }
-    
+            System.out.println("The final Value is-"+Result.num+"/"+Result.denom);
+    }    
 
     void addFraction(Fraction B){
         Fraction R =new Fraction();
@@ -45,19 +44,44 @@ class Fraction{
             return gcd(denom, num % denom);
         }
     }
+        void SubFractin(Fraction B){
+            Fraction R=new Fraction();
+            R.num=(num*B.denom)-(B.num*denom);
+            R.denom=(B.denom)*(denom);
+            this.showfraction(R);
+        }
 }
-class Main{
+class Main {
     public static void main(String[] args){
         Fraction f1=new Fraction();
-        f1.GetValue("f1");
-        f1.showfraction(f1);
-        
-        Fraction f2=new Fraction();
-        f2.GetValue("f2");
-        f2.showfraction(f2);
-        
-        f1.addFraction(f2);
-        f1.sc.close();
+       
+        while(true){
+            System.out.print("\n1.For ADD\t2.SUB\t3.MULT\t4.DIV\nEnter Your Choice- ");
+            int choice=Fraction.sc.nextInt();
+            switch(choice){
+                case 1:{
+                    f1.GetValue("f1");
+                    f1.showfraction(f1);
+                    break;
+                }
+                case 2:{
+                    Fraction f2=new Fraction();
+                    f2.GetValue("f2");
+                    f2.showfraction(f2);
+                    f1.SubFractin(f2);
+                    break;
+                }
+                case 4:{
+                    System.out.print("Exiting....");
+                    f1.sc.close();
+                    System.exit(0);
+                }
+                default:{
+                    System.out.println("Wrong input");
+                    break;
+                }
+            }
+        }
     }
     
 }
