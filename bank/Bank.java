@@ -69,7 +69,7 @@ class CC extends Custumer{
     
 }
 
-public class Bank {
+public class Main {
 
     public static void main(String[] args) {
         Sb sb1=new Sb();
